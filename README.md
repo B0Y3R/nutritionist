@@ -4,8 +4,8 @@ Monorepo for a nutritionist app. The backend uses LLMs to extract macronutrients
 
 ## What it does
 
-- **`macro.ts`** — Sends a meal description to an LLM via OpenRouter and returns structured macro data (calories, protein, carbs, fat, fiber). Traces the request in Langfuse with token usage and cost.
-- **`smoke.ts`** — Verifies the Langfuse integration is wired up correctly.
+- **`apps/api/macro.ts`** — Sends a meal description to an LLM via OpenRouter and returns structured macro data (calories, protein, carbs, fat, fiber). Traces the request in Langfuse with token usage and cost.
+- **`apps/api/smoke.ts`** — Verifies the Langfuse integration is wired up correctly.
 
 ## Prerequisites
 
@@ -39,10 +39,10 @@ Alternatively, use [Langfuse Cloud](https://cloud.langfuse.com) and set `LANGFUS
 git clone git@github.com:B0y3r/nutritionist.git
 cd nutritionist
 npm install
-cp .env.example .env
+cp apps/api/.env.example apps/api/.env
 ```
 
-Edit `.env` with your credentials:
+Edit `apps/api/.env` with your credentials:
 
 | Variable | Description |
 |----------|-------------|
@@ -56,13 +56,13 @@ Edit `.env` with your credentials:
 Verify Langfuse tracing:
 
 ```bash
-npx tsx smoke.ts
+npm run smoke
 ```
 
 Extract macros from a meal description:
 
 ```bash
-npx tsx macro.ts
+npm run macro
 ```
 
 Check your Langfuse dashboard for traces after either command runs.
@@ -71,11 +71,14 @@ Check your Langfuse dashboard for traces after either command runs.
 
 ```
 .
-├── instrumentation.ts   # OpenTelemetry + Langfuse span processor
-├── macro.ts             # LLM macro extraction with cost tracking
-├── smoke.ts             # Langfuse connectivity smoke test
-├── .env.example         # Environment variable template
-└── package.json
+├── apps/
+│   └── api/
+│       ├── instrumentation.ts   # OpenTelemetry + Langfuse span processor
+│       ├── macro.ts             # LLM macro extraction with cost tracking
+│       ├── smoke.ts             # Langfuse connectivity smoke test
+│       ├── .env.example         # Environment variable template
+│       └── package.json
+└── package.json                 # Workspace root
 ```
 
 ## Stack
