@@ -9,14 +9,34 @@ Backend for a nutritionist app that uses LLMs to extract macronutrients from nat
 
 ## Prerequisites
 
-- Node.js 18+
+- Node.js 22+
+- [Docker](https://docs.docker.com/get-docker/) and Docker Compose
 - An [OpenRouter API key](https://openrouter.ai/)
-- A [Langfuse](https://langfuse.com/) project (self-hosted or cloud)
+
+## Run Langfuse locally
+
+This project sends traces to Langfuse. The easiest way to run it locally is via Docker using the official Langfuse repo.
+
+```bash
+git clone --depth=1 https://github.com/langfuse/langfuse.git
+cd langfuse
+docker compose up
+```
+
+Wait for the containers to start, then open [http://localhost:3000](http://localhost:3000).
+
+1. Sign up for a local account (or log in).
+2. Create a project.
+3. Go to **Project Settings → API Keys** and copy your **public** and **secret** keys.
+
+Keep Langfuse running in the background while you use this project. For production or advanced self-hosting options, see the [Langfuse self-hosting docs](https://langfuse.com/docs/deployment/self-host).
+
+Alternatively, use [Langfuse Cloud](https://cloud.langfuse.com) and set `LANGFUSE_BASE_URL` to `https://cloud.langfuse.com`.
 
 ## Setup
 
 ```bash
-git clone git@github.com:YOUR_USER/nutritionist-backend.git
+git clone git@github.com:B0y3r/nutritionist-backend.git
 cd nutritionist-backend
 npm install
 cp .env.example .env
@@ -27,9 +47,9 @@ Edit `.env` with your credentials:
 | Variable | Description |
 |----------|-------------|
 | `OPENROUTER_API_KEY` | OpenRouter API key |
-| `LANGFUSE_SECRET_KEY` | Langfuse secret key |
-| `LANGFUSE_PUBLIC_KEY` | Langfuse public key |
-| `LANGFUSE_BASE_URL` | Langfuse host (e.g. `http://localhost:3000` or `https://cloud.langfuse.com`) |
+| `LANGFUSE_SECRET_KEY` | From Langfuse project settings |
+| `LANGFUSE_PUBLIC_KEY` | From Langfuse project settings |
+| `LANGFUSE_BASE_URL` | `http://localhost:3000` when using local Docker |
 
 ## Usage
 
