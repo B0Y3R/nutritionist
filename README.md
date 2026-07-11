@@ -1,6 +1,6 @@
-# nutritionist-backend
+# nutritionist
 
-Backend for a nutritionist app that uses LLMs to extract macronutrients from natural-language meal descriptions. Built with the [Vercel AI SDK](https://sdk.vercel.ai/), [OpenRouter](https://openrouter.ai/), and [Langfuse](https://langfuse.com/) for observability.
+Monorepo for a nutritionist app. The backend uses LLMs to extract macronutrients from natural-language meal descriptions. Built with the [Vercel AI SDK](https://sdk.vercel.ai/), [OpenRouter](https://openrouter.ai/), and [Langfuse](https://langfuse.com/) for observability.
 
 ## What it does
 
@@ -36,8 +36,8 @@ Alternatively, use [Langfuse Cloud](https://cloud.langfuse.com) and set `LANGFUS
 ## Setup
 
 ```bash
-git clone git@github.com:B0y3r/nutritionist-backend.git
-cd nutritionist-backend
+git clone git@github.com:B0y3r/nutritionist.git
+cd nutritionist
 npm install
 cp .env.example .env
 ```
