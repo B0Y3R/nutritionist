@@ -89,6 +89,18 @@ npm run macro
 
 Check your Langfuse dashboard for traces after either command runs.
 
+## Testing
+
+```bash
+# Mocked unit + route tests (default CI)
+npm test
+
+# Optional live OpenRouter smoke (requires apps/api/.env)
+npm run test:live
+```
+
+Default tests never call OpenRouter. Live tests are skipped when `OPENROUTER_API_KEY` is unset.
+
 ## Project structure
 
 ```
@@ -105,6 +117,7 @@ Check your Langfuse dashboard for traces after either command runs.
 │   └── shared/                  # Zod schemas + model allowlist
 ├── docs/
 │   └── api.md                   # HTTP API reference
+├── .github/workflows/ci.yml     # npm test on push/PR
 └── package.json                 # Workspace root
 ```
 

@@ -141,3 +141,7 @@ Pass a **key** in `model`, not the full OpenRouter id. Keys are defined in `pack
 ## Privacy note
 
 Meal text is sent to OpenRouter for inference and recorded in Langfuse traces (input/output) when observability is enabled.
+
+## Testing
+
+See the root README. Default suite is mocked (`npm test`); live OpenRouter smoke is `npm run test:live`.

@@ -61,3 +61,6 @@ credentials.json
 secrets.json
 service-account*.json
 **/google-credentials*.json
+
+# Agent working notes (local only — do not publish)
+docs/superpowers/
