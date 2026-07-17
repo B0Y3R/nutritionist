@@ -46,3 +46,18 @@ jspm_packages/
 .env
 .env.*
 !.env.example
+!**/.env.example
+
+# Common credential / key material (defense in depth for OSS)
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+credentials.json
+secrets.json
+service-account*.json
+**/google-credentials*.json
