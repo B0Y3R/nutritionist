@@ -19,7 +19,7 @@ const anthropicModels: Record<string, string> = {
     haiku: "~anthropic/claude-haiku-latest",
 } as const;
 
-const MODEL = anthropicModels.haiku;
+const MODEL = anthropicModels.opus;
 const MEAL_TEXT_STRING = "4 eggs cooked with butter and 2 slices of Dave's Killer Bread Powerseed";
 const SYSTEM_PROMPT_STRING = "Extract macros. Reply ONLY with JSON format. { calories, protien, carbs, fat, fiber} for each food item.";
 

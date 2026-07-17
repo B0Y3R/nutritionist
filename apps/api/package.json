@@ -2,22 +2,30 @@
   "name": "api",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
     "smoke": "tsx smoke.ts",
     "macro": "tsx macro.ts"
   },
   "dependencies": {
+    "@hono/node-server": "^2.0.10",
     "@hono/zod-validator": "^0.8.0",
     "@langfuse/otel": "^5.9.1",
     "@langfuse/tracing": "^5.9.1",
     "@langfuse/vercel-ai-sdk": "^5.9.1",
+    "@nutritionist/shared": "*",
     "@openrouter/ai-sdk-provider": "^3.0.0",
     "@opentelemetry/sdk-node": "^0.220.0",
     "ai": "^7.0.22",
     "dotenv": "^17.4.2",
+    "hono": "^4.12.29",
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "tsx": "^4.23.0"
+    "@types/node": "^26.1.1",
+    "tsx": "^4.23.0",
+    "typescript": "^5.9.3"
   }
 }
