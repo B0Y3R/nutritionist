@@ -9,6 +9,6 @@ export function getApiBaseUrl(
     const override = env.EXPO_PUBLIC_API_URL?.trim();
     if (override) return override.replace(/\/$/, "");
 
-    if (platform == "android") return "http://10.0.2.2:3001";
+    if (platform === "android") return "http://10.0.2.2:3001";
     return "http://localhost:3001";
 }

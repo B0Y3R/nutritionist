@@ -93,9 +93,26 @@ describe("POST /macros", () => {
                 message: "parse failed",
                 text: undefined,
                 cause: undefined,
-                response: undefined,
-                usage: undefined,
-                finishReason: undefined,
+                response: {
+                    id: "resp-1",
+                    timestamp: new Date(),
+                    modelId: "test-model",
+                },
+                usage: {
+                    inputTokens: 0,
+                    outputTokens: 0,
+                    totalTokens: 0,
+                    inputTokenDetails: {
+                        noCacheTokens: 0,
+                        cacheReadTokens: undefined,
+                        cacheWriteTokens: undefined,
+                    },
+                    outputTokenDetails: {
+                        textTokens: 0,
+                        reasoningTokens: undefined,
+                    },
+                },
+                finishReason: "stop",
             }),
         );
 

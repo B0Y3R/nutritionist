@@ -1,8 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
+import { getApiBaseUrl } from "../config";
 
 vi.mock("react-native", () => ({ Platform: { OS: "ios" } }));
-
-import { getApiBaseUrl } from "../config";
 
 describe("getApiBaseUrl", () => {
     it("defaults ios to localhost", () => {
