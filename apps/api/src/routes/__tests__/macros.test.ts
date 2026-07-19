@@ -111,6 +111,7 @@ describe("POST /macros", () => {
     });
 
     it("returns 500 on unexpected errors", async () => {
+        const consoleError = vi.spyOn(console, "error").mockImplementation(() => {});
         extractMacrosMock.mockRejectedValue(new Error("boom"));
 
         const app = createApp();
@@ -122,5 +123,7 @@ describe("POST /macros", () => {
 
         expect(res.status).toBe(500);
         expect(await res.json()).toEqual({ error: "internal server error" });
+        expect(consoleError).toHaveBeenCalled();
+        consoleError.mockRestore();
     });
 });
