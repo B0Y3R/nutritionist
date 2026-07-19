@@ -18,7 +18,7 @@ export const foodItemSchema = z.object({
 export const macroSchema = z.object({
     items: z.array(foodItemSchema).min(1),
     total: foodItemSchema.omit({ name: true, quantity: true }),
-    assumtions: z.array(z.string()), // assumptions about meal (1tbsp of butter, 1 cup of rice, etc.)
+    assumptions: z.array(z.string()), // assumptions about meal (1tbsp of butter, 1 cup of rice, etc.)
 });
 
 export const macroRequestSchema = z.object({
@@ -28,4 +28,16 @@ export const macroRequestSchema = z.object({
     userId: z.uuid(),
 });
 
+export const macroResponseSchema = z.object({
+    macros: macroSchema,
+    traceId: z.string().min(1),
+    cost: z.number().optional(),
+});
+
+export const apiErrorSchema = z.object({
+    error: z.string().min(1),
+});
+
 export type Macros = z.infer<typeof macroSchema>;
+export type MacroResponse = z.infer<typeof macroResponseSchema>;
+export type ApiError = z.infer<typeof apiErrorSchema>;

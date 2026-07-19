@@ -83,7 +83,7 @@ curl -s -X POST http://localhost:3001/macros \
       "carbohydrates": 1,
       "fiber": 0
     },
-    "assumtions": [
+    "assumptions": [
       "Assumed large eggs",
       "Assumed 1 tsp butter for cooking"
     ]
@@ -107,9 +107,11 @@ Defined in `packages/shared` (`macroSchema`):
 |-------|------|-------------|
 | `items` | array | Per-food breakdown (`name`, `quantity`, `calories`, `protein`, `fat`, `carbohydrates`, `fiber`) |
 | `total` | object | Aggregated macros (same nutrient fields, no `name` / `quantity`) |
-| `assumtions` | string[] | Assumptions the model made (spelling matches the schema) |
+| `assumptions` | string[] | Assumptions the model made (spelling matches the schema) |
 
 ### Errors
+
+Error bodies match `apiErrorSchema` (`{ "error": string }`) for `422` / `500`. A `400` currently returns the raw Zod validator result and is not a stable public contract.
 
 | Status | When |
 |--------|------|

@@ -51,7 +51,7 @@ describe("POST /macros", () => {
                     carbohydrates: 1,
                     fiber: 0,
                 },
-                assumtions: ["large eggs"],
+                assumptions: ["large eggs"],
             },
             traceId: "trace-1",
             cost: 0.001,

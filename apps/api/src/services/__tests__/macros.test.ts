@@ -35,7 +35,7 @@ describe("extractMacros", () => {
                 carbohydrates: 36,
                 fiber: 4,
             },
-            assumtions: [],
+            assumptions: [],
         };
 
         tracedGenerateMock.mockResolvedValue({
