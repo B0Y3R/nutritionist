@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
 import { NoObjectGeneratedError, NoOutputGeneratedError } from "ai";
-import { macroRequestSchema } from "@nutritionist/shared";
+import { macroRequestSchema, macroResponseSchema} from "@nutritionist/shared";
 import { extractMacros } from "../services/macros";
 
 export const macrosRoute = new Hono();
@@ -11,7 +11,7 @@ macrosRoute.post("/", zValidator("json", macroRequestSchema), async (c) => {
 
     try {
         const result = await extractMacros({ meal, sessionId, model, userId });
-        return c.json(result);
+        return c.json(macroResponseSchema.parse(result));
     } catch (error) {
         if (
             NoObjectGeneratedError.isInstance(error) ||

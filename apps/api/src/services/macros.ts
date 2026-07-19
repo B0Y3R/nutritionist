@@ -7,7 +7,7 @@ import {
 } from "@nutritionist/shared";
 import { tracedGenerate } from "../llm/traced";
 
-const SYSTEM_PROMPT = `Extract macros for each food item in the meal. State every assumptoin you make about quantity, size, or preparation in the assumptions array. use USDA values.`
+const SYSTEM_PROMPT = `Extract macros for each food item in the meal. State every assumption you make about quantity, size, or preparation in the assumptions array. Use USDA values.`;
 
 export type ExtractArgs = {
     meal: string;

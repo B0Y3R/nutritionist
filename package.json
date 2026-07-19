@@ -8,8 +8,13 @@
   ],
   "scripts": {
     "dev": "npm run dev -w api",
+    "mobile": "npm run start -w mobile",
+    "mobile:ios": "npm run ios -w mobile",
+    "mobile:android": "npm run android -w mobile",
     "start": "npm run start -w api",
     "test": "npm test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
     "test:live": "npm run test:live -w api",
     "smoke": "npm run smoke -w api",
     "macro": "npm run macro -w api"

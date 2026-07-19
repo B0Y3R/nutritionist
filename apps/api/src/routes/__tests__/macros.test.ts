@@ -51,7 +51,7 @@ describe("POST /macros", () => {
                     carbohydrates: 1,
                     fiber: 0,
                 },
-                assumtions: ["large eggs"],
+                assumptions: ["large eggs"],
             },
             traceId: "trace-1",
             cost: 0.001,
@@ -93,9 +93,26 @@ describe("POST /macros", () => {
                 message: "parse failed",
                 text: undefined,
                 cause: undefined,
-                response: undefined,
-                usage: undefined,
-                finishReason: undefined,
+                response: {
+                    id: "resp-1",
+                    timestamp: new Date(),
+                    modelId: "test-model",
+                },
+                usage: {
+                    inputTokens: 0,
+                    outputTokens: 0,
+                    totalTokens: 0,
+                    inputTokenDetails: {
+                        noCacheTokens: 0,
+                        cacheReadTokens: undefined,
+                        cacheWriteTokens: undefined,
+                    },
+                    outputTokenDetails: {
+                        textTokens: 0,
+                        reasoningTokens: undefined,
+                    },
+                },
+                finishReason: "stop",
             }),
         );
 
@@ -111,6 +128,7 @@ describe("POST /macros", () => {
     });
 
     it("returns 500 on unexpected errors", async () => {
+        const consoleError = vi.spyOn(console, "error").mockImplementation(() => {});
         extractMacrosMock.mockRejectedValue(new Error("boom"));
 
         const app = createApp();
@@ -122,5 +140,7 @@ describe("POST /macros", () => {
 
         expect(res.status).toBe(500);
         expect(await res.json()).toEqual({ error: "internal server error" });
+        expect(consoleError).toHaveBeenCalled();
+        consoleError.mockRestore();
     });
 });
