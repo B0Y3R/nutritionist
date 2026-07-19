@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { createIdHelpers, type KvStorage } from "../../ids";
+import { createIdHelpers, type KvStorage } from "./ids";
 
 vi.mock("expo-crypto", () => ({
     randomUUID: () => "should-not-be-used",
